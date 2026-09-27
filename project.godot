@@ -1,0 +1,53 @@
+; UZ FOOTBALL — Godot 4 Android project
+; Original procedural assets only.
+config_version=5
+
+[application]
+config/name="UZ FOOTBALL"
+run/main_scene="res://Scenes/Main.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0.025, 0.04, 0.075, 1)
+boot_splash/image="res://UI/icon.svg"
+config/icon="res://UI/icon.svg"
+
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+
+environment/defaults/default_clear_color=Color(0.025, 0.04, 0.075, 1)
+
+[physics]
+common/enable_pause_aware_picking=true
+
+[input]
+move_left={"deadzone": 0.2, "events": [Object(InputEventKey,"physical_keycode":65), Object(InputEventKey,"physical_keycode":4194311)]}
+move_right={"deadzone": 0.2, "events": [Object(InputEventKey,"physical_keycode":68), Object(InputEventKey,"physical_keycode":4194313)]}
+move_forward={"deadzone": 0.2, "events": [Object(InputEventKey,"physical_keycode":87), Object(InputEventKey,"physical_keycode":4194320)]}
+move_back={"deadzone": 0.2, "events": [Object(InputEventKey,"physical_keycode":83), Object(InputEventKey,"physical_keycode":4194322)]
+pass_ball={"deadzone": 0.2, "events": [Object(InputEventKey,"physical_keycode":74)]}
+shoot_ball={"deadzone": 0.2, "events": [Object(InputEventKey,"physical_keycode":75)]}
+sprint={"deadzone": 0.2, "events": [Object(InputEventKey,"physical_keycode":32)]}
+
+[gui]
+theme/default_font_multichannel_signed_distance_field=true
+
+[android]
+package/unique_name="com.uzfootball.game"
+package/name="UZ FOOTBALL"
+version/code=1
+version/name="1.0.0"
+permissions/internet=false
+architecture/arm64-v8a=true
+architecture/armeabi-v7a=false
+
+[application_metadata]
+config/version="1.0.0"
+config/language="uz"
