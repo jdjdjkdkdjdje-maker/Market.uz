@@ -64,6 +64,11 @@ func _start_match(team_id: int) -> void:
 	_build_stadium()
 	var camera := Camera3D.new(); camera.position = Vector3(0, 25, 25); camera.look_at(Vector3.ZERO); add_child(camera); camera.current = true
 	ui = UIManager.new(); add_child(ui); var root := Control.new(); root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); ui.add_child(root); ui.setup_match(root)
+<<<<<<< HEAD
+=======
+	ui.action_pressed.connect(_mobile_action)
+	ui.joystick_changed.connect(_mobile_joystick)
+>>>>>>> 3ae11df (feat: add mobile touch match controls)
 	match = MatchManager.new(); add_child(match); match.start_match(); match.score_changed.connect(_on_score); match.match_finished.connect(_finish_match)
 	var team_color: Color = TeamManager.TEAMS[team_id].color
 	controlled = _spawn_player("Jasur Karimov", 0, Vector3(-8, 0, 0), team_color, true)
@@ -109,6 +114,17 @@ func _physics_process(delta: float) -> void:
 	if ui and match.match_seconds - last_goal_time < 2.2: ui.status_label.text = "GOL!  Hisob yangilandi"
 	elif ui: ui.status_label.text = ""
 
+<<<<<<< HEAD
+=======
+func _mobile_action(action: String) -> void:
+	if action == "shoot": _kick(true)
+	elif action == "pass": _kick(false)
+	elif action == "tackle" and ball and controlled.global_position.distance_to(ball.global_position) < 2.5: ball.linear_velocity = Vector3(4, 0.4, 0)
+
+func _mobile_joystick(value: Vector2) -> void:
+	if controlled and match_running: controlled.move_user(value, get_process_delta_time(), false)
+
+>>>>>>> 3ae11df (feat: add mobile touch match controls)
 func _kick(shoot: bool) -> void:
 	if not ball or controlled.global_position.distance_to(ball.global_position) > 3.0: return
 	var direction := Vector3(1, 0, 0)
