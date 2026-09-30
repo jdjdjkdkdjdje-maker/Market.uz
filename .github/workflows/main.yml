@@ -8,21 +8,30 @@ on:
 
 jobs:
   android:
+    name: Android APK
     runs-on: ubuntu-latest
 
     steps:
       - name: Kodni yuklash
         uses: actions/checkout@v4
 
-      - name: Godot Android APK build
-        uses: firebelley/godot-android-build@v1.2.0
+      - name: Godot o‘rnatish
+        uses: chickensoft-games/setup-godot@v2
         with:
-          godot-version: 4.3.0
-          project-dir: .
-          export-target: Android
+          version: 4.3.0
+          use-dotnet: false
 
-      - name: APKni saqlash
+      - name: Android export template o‘rnatish
+        run: |
+          godot --headless --editor --install-android-build-template
+
+      - name: APK build qilish
+        run: |
+          mkdir -p build
+          godot --headless --path . --export-release "Android" build/UZ-FOOTBALL.apk
+
+      - name: APKni yuklash
         uses: actions/upload-artifact@v4
         with:
           name: UZ-FOOTBALL-APK
-          path: build/**/*.apk
+          path: build/UZ-FOOTBALL.apk
