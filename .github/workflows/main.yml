@@ -1,0 +1,28 @@
+name: UZ FOOTBALL APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kodni yuklash
+        uses: actions/checkout@v4
+
+      - name: Godot Android APK build
+        uses: firebelley/godot-android-build@v1.2.0
+        with:
+          godot-version: 4.3.0
+          project-dir: .
+          export-target: Android
+
+      - name: APKni saqlash
+        uses: actions/upload-artifact@v4
+        with:
+          name: UZ-FOOTBALL-APK
+          path: build/**/*.apk
